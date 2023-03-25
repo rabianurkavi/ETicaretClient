@@ -15,7 +15,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     CustomersModule,
     ProductsModule,
     OrdersModule,
-    DashboardModule
+    DashboardModule,
 
   ]
 })
