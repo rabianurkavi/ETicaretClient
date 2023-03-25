@@ -13,7 +13,7 @@ import { DashboardComponent } from 'src/app/admin/components/dashboard/dashboard
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:"", component: DashboardComponent}
+      {path:"", component: BasketsComponent}
     ])
   ]
 })
