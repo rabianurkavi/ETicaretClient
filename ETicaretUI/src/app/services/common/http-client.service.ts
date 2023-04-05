@@ -22,7 +22,7 @@ export class HttpClientService {
     if(requestParameter.fullEndPoint)
        url=requestParameter.fullEndPoint;
     else
-      url = `${this.url(requestParameter)}${id ? `${id}`: " "}`;
+      url = `${this.url(requestParameter)}${id ? `/${id}`: ""}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
     return this.httpClient.get<T>(url, { headers:requestParameter.headers });
 
   }
@@ -32,7 +32,7 @@ export class HttpClientService {
     if(requestParameter.fullEndPoint)
        url = requestParameter.fullEndPoint;
     else
-       url = `${this.url(requestParameter)}`;
+       url = `${this.url(requestParameter)}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
     return this.httpClient.post<T>(url, body, { headers: requestParameter.headers});
   }
   delete<T>(requestParameter: Partial<RequestParameters>, id:string):Observable<T>{
@@ -40,7 +40,7 @@ export class HttpClientService {
     if(requestParameter.fullEndPoint)
       url=requestParameter.fullEndPoint
     else
-      url=`${this.url(requestParameter)}/${id}`;
+      url=`${this.url(requestParameter)}/${id}${requestParameter.queryString ? `?${requestParameter.queryString}` : ""}`;
     return this.httpClient.delete<T>(url, {headers: requestParameter.headers})
     
   }
@@ -49,7 +49,7 @@ export class HttpClientService {
     if(requestParameter.fullEndPoint)
       url = requestParameter.fullEndPoint
     else
-      url = `${this.url(requestParameter)}`; //idyi body den sağlayacağız
+      url = `${this.url(requestParameter)}${requestParameter.queryString ? `?${requestParameter.queryString}` : "" }` ;//idyi body den sağlayacağız
       
     return this.httpClient.put<T>(url, body, { headers: requestParameter.headers});
   }
@@ -59,8 +59,10 @@ export class HttpClientService {
 export class RequestParameters{
   controller?: string;
   action?:string;
+  queryString?: string;//pagination işlemleri için
 
   headers?: HttpHeaders; //headers lazım olabilir HttpHeaders dan gelen
   baseUrl?:string//baseurl i de değiştirebilecek olabilirim
   fullEndPoint?:string //diğerleriyle ilgili bir çalışma yapmak istemiyorsa yani dış dünyada farklı servislerde göndermek isteyeceksek
+
 }
