@@ -9,6 +9,8 @@ import { Position } from 'src/app/services/admin/alertify.service';
 import { AlertifyService } from 'src/app/services/admin/alertify.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 
+declare var $:any
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -21,7 +23,7 @@ export class ProductListComponent extends BaseComponent {
       super(spinner)
     }
 
-  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate','updatedDate'];
+  displayedColumns: string[] = ['name', 'stock', 'price', 'createdDate','updatedDate','edit', 'delete'];
   dataSource: MatTableDataSource<List_Product> = null;//verilerim daha gelmeedi ben bir istek yapacağım istekten sonra gelen verileri dataSource a vereceğim
 
   @ViewChild(MatPaginator) paginator:MatPaginator;
@@ -40,6 +42,11 @@ export class ProductListComponent extends BaseComponent {
       this.dataSource=new MatTableDataSource<List_Product>(allProducts.products);
       this.paginator.length=allProducts.totalCount;
   }
+  // delete(id, event){
+
+  //   const img: HTMLImageElement = event.srcElement;
+  //   $(img.parentElement.parentElement).fadeOut(2000);
+  //  }
   async pageChanged(){
     await this.getProducts()
 
@@ -48,6 +55,7 @@ export class ProductListComponent extends BaseComponent {
   async ngOnInit(){
    await this.getProducts()
   }
+ 
 
   
   
