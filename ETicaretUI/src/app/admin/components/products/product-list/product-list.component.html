@@ -29,8 +29,8 @@
         <td mat-cell *matCellDef="let element"> <img width="30" height="30" src="../assets/edit.png" /> </td>
       </ng-container>
       <ng-container matColumnDef="delete">
-        <th mat-header-cell *matHeaderCellDef>  </th>
-        <td mat-cell *matCellDef="let element" appDelete> 
+        <th mat-header-cell *matHeaderCellDef width="30">  </th>
+        <td [id]="element.id" mat-cell *matCellDef="let element" appDelete (updateAuto)="getProducts()"> 
           <!-- <img width="40" height="40" src="../assets/cross2.png" (click)="delete(element.id, $event)" />  -->
         </td>
       </ng-container>

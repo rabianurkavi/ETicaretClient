@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { DeleteDirective } from 'src/app/directives/admin/delete.directive';
 
 
 
@@ -20,7 +21,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   declarations: [
     ProductsComponent,
     ProductCreateComponent,
-    ProductListComponent
+    ProductListComponent,
+    DeleteDirective
   ],
   imports: [
     CommonModule,
